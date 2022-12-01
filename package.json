@@ -1,0 +1,19 @@
+{
+  "name": "ossp_team21",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000o\u0000s\u0000s\u0000p\u0000_\u0000t\u0000e\u0000a\u0000m\u00002\u00001\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjsdn1120/ossp_team21.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjsdn1120/ossp_team21/issues"
+  },
+  "homepage": "https://github.com/rjsdn1120/ossp_team21#readme"
+}
