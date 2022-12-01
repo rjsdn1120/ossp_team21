@@ -64,7 +64,7 @@
             y /= markers.length;
             */
             var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
-            addMarker(marker)
+            marker.setMap(map);
         }
 
 
