@@ -58,6 +58,10 @@
                 x += markers[i].getPosition().getLat();
                 y += markers[i].getPosition().getLng();
             }
+
+            x /= markers.length;
+            y /= markers.length;
+
             var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
             addMarker(marker)
         }
