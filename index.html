@@ -36,6 +36,17 @@
         // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
         var markers = [];
 
+
+        //지도 움직임 제어 설정 함수입니다
+        function setDraggable(draggable){
+            map.setDraggable(draggable);
+        }
+        function setZoomable(zoomable){
+            map.setZoomable(zoomable);
+        }
+
+        
+
         // 마커를 생성하고 지도위에 표시하는 함수입니다
         function addMarker(position) {
 
@@ -66,7 +77,7 @@
             var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
             marker.setMap(map);
         }
-        //test11
+        
 
     </script>
 </body>
