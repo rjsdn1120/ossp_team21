@@ -47,11 +47,24 @@
 
 <body>
     <p>카카오 맵</p>
-    <div id="map" style="width:1000px;height:800px;"></div>
+    <div id="map" style="width:1000px; height:800px; position:relative; overflow:hidden; float: left; margin-right: 10px;"></div>  
+    <div id="menu_wrap" class="bg_white;" style="width: 300px; height: 800px; float:right; margin-left: 1000px;">
+        <div class="option">
+            <div>
+                <form onsubmit="searchPlaces(); return false;">
+                    키워드 : <input type="text" value="성균관대학교 삼성학술정보관" id="keyword" size="15"> 
+                    <button type="submit">검색하기</button> 
+                </form>
+            </div>
+        </div>
+        <hr>
+        <ul id="placesList"></ul>
+        <div id="pagination"></div>
+    </div>
 
-    <p>
-        <button onclick="findMeetPlace()">약속 장소 찾기</button>
-    </p> 
+    <p style="margin-top: 820px;">
+        <button onclick="findMeetPlace()">약속 장소 찾기</button>   
+        <button onclick="removeMarker()">마커 지우기</button>
     <em>버튼을 누르면 약속 장소를 찾아줍니다!</em>
 
     <script type="text/javascript"
@@ -367,6 +380,19 @@
             y /= markers.length;
             var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
             marker.setMap(map);
+            center = marker;
+            markers.push(marker);
+        }
+
+        function removeMarker(){
+            for ( var i = 0; i < markers.length; i++ ) {
+                markers[i].setMap(null);
+            }   
+            for(i = 0; i < lines.length; i++){
+                lines[i].setMap(null);
+            }
+            markers = [];
+            lines = [];
         }
 
 
