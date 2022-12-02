@@ -61,11 +61,10 @@
         <ul id="placesList"></ul>
         <div id="pagination"></div>
     </div>
-    
+
     <p style="margin-top: 820px;">
         <button onclick="findMeetPlace()">약속 장소 찾기</button>   
         <button onclick="removeMarker()">마커 지우기</button>
-    </p> 
     <em>버튼을 누르면 약속 장소를 찾아줍니다!</em>
 
     <script type="text/javascript"
@@ -365,24 +364,24 @@
             polyline.setMap(map);
         }
 
+        //중간 지점 찾기
+
+        var center;
+
         function findMeetPlace(){
-            var x = 37.2939145096798;
-            var y = 126.97492891783321;
-            /*
+            var x = 0;
+            var y = 0;
+            
             for(var i = 0; i < markers.length; i++){
                 x += markers[i].getPosition().getLat();
                 y += markers[i].getPosition().getLng();
             }
-
             x /= markers.length;
             y /= markers.length;
-            */
-            
-            //var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
-            //marker.setMap(map);
-            loca= new kakao.maps.LatLng(x, y);
-            addMarker(loca);
-            addLine();
+            var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
+            marker.setMap(map);
+            center = marker;
+            markers.push(marker);
         }
 
         function removeMarker(){
@@ -395,7 +394,7 @@
             markers = [];
             lines = [];
         }
-        
+
 
     </script>
 </body>
