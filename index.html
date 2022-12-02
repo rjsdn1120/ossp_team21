@@ -97,7 +97,7 @@
     </div>
 
     <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=886e33d99b22fa07c638f6453d20444d&libraries=services"></script>
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e650af64592670764f79bc137ce5ae49&libraries=services"></script>
 
 
         <script>
@@ -442,7 +442,6 @@
                 
                 x /= markers.length;
                 y /= markers.length;
-                var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
                 searchDetailAddrFromCoords(new kakao.maps.LatLng(x, y), (result,status)=>{
                     if (status === kakao.maps.services.Status.OK) {
                         document.getElementById('keyword').value = result[0].address.address_name
@@ -451,9 +450,9 @@
                     }
                 })
 
-                marker.setMap(map);
-                center = marker;
-                markers.push(marker);
+                loca= new kakao.maps.LatLng(x, y);
+                addMarker(loca);
+                addLine();
         }
 
         function removeMarker(){
