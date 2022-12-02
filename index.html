@@ -439,27 +439,21 @@
                     x += markers[i].getPosition().getLat();
                     y += markers[i].getPosition().getLng();
                 }
+                
                 x /= markers.length;
                 y /= markers.length;
-                var marker = new kakao.maps.Marker({ position: new kakao.maps.LatLng(x, y) });
+                var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
+                searchDetailAddrFromCoords(new kakao.maps.LatLng(x, y), (result,status)=>{
+                    if (status === kakao.maps.services.Status.OK) {
+                        document.getElementById('keyword').value = result[0].address.address_name
+                        searchPlaces()
+
+                    }
+                })
+
                 marker.setMap(map);
                 center = marker;
                 markers.push(marker);
-            }
-            x /= markers.length;
-            y /= markers.length;
-            var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
-            searchDetailAddrFromCoords(new kakao.maps.LatLng(x, y), (result,status)=>{
-                if (status === kakao.maps.services.Status.OK) {
-                    document.getElementById('keyword').value = result[0].address.address_name
-                    searchPlaces()
-                    
-                }
-            })
-
-            marker.setMap(map);
-            center = marker;
-            markers.push(marker);
         }
 
         function removeMarker(){
