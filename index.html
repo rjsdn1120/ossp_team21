@@ -457,6 +457,10 @@
         }
 
         function removeMarker(){
+            marker_num = 0;
+            for (var i = 0; i < infowindows.length; i++) {
+                infowindows[i].close();
+            }
             for ( var i = 0; i < markers.length; i++ ) {
                 markers[i].setMap(null);
             }   
