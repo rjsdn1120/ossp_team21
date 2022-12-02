@@ -12,7 +12,7 @@
 
     <p>
         <button onclick="findMeetPlace()">약속 장소 찾기</button>
-    </p> 
+    </p>
     <em>버튼을 누르면 약속 장소를 찾아줍니다!</em>
 
     <script type="text/javascript"
@@ -51,22 +51,24 @@
             markers.push(marker);
         }
 
+        //중간 지점 찾기
+
         function findMeetPlace(){
-            var x = 37.2939145096798;
-            var y = 126.97492891783321;
-            /*
+            var x = 0;
+            var y = 0;
+            
             for(var i = 0; i < markers.length; i++){
                 x += markers[i].getPosition().getLat();
                 y += markers[i].getPosition().getLng();
             }
-
             x /= markers.length;
             y /= markers.length;
-            */
+
             var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
             marker.setMap(map);
         }
 
+        //중간 지점 찾기
 
     </script>
 </body>
