@@ -63,7 +63,7 @@
     </div>
     
     <p style="margin-top: 820px;">
-        <button onclick="findMeetPlace()">약속 장소 찾기</button>
+        <button onclick="findMeetPlace()">약속 장소 찾기</button>   
         <button onclick="removeMarker()">마커 지우기</button>
     </p> 
     <em>버튼을 누르면 약속 장소를 찾아줍니다!</em>
@@ -75,6 +75,7 @@
         // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
         var markers = [];
         var keyword_markers = [];
+        var lines = [];
 
         var container = document.getElementById('map');
         var options = {
@@ -296,7 +297,7 @@
             }
         }
 
-
+        
 
 
 
@@ -341,6 +342,29 @@
 
         }
 
+        function addLine(){
+            var linePath=[];
+            var maxidx = markers.length - 1;
+            linePath.push(markers[maxidx].getPosition());
+            for(i=0; i < maxidx; i++){
+                linePath.push(markers[i].getPosition());
+                linePath.push(markers[maxidx].getPosition());
+            }
+
+            var polyline = new kakao.maps.Polyline({
+                path: linePath,  //선을 구성하는 좌표 배열입니다
+                strokeWeight: 5, // 선의 두께입니다 
+                strokeColor: 'red', // 선의 색깔입니다
+                strokeOpacity: 0.5, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                strokeStyle: 'solid', // 선의 스타일 입니다
+                fillColor: 'red', // 채우기 색깔입니다
+                fillOpacity: 0.5  // 채우기 불투명도 입니다
+            });
+            lines.push(polyline);
+
+            polyline.setMap(map);
+        }
+
         function findMeetPlace(){
             var x = 37.2939145096798;
             var y = 126.97492891783321;
@@ -358,13 +382,18 @@
             //marker.setMap(map);
             loca= new kakao.maps.LatLng(x, y);
             addMarker(loca);
+            addLine();
         }
 
         function removeMarker(){
             for ( var i = 0; i < markers.length; i++ ) {
                 markers[i].setMap(null);
             }   
+            for(i = 0; i < lines.length; i++){
+                lines[i].setMap(null);
+            }
             markers = [];
+            lines = [];
         }
         
 
