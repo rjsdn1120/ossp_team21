@@ -53,6 +53,8 @@
 
         //중간 지점 찾기
 
+        var center;
+
         function findMeetPlace(){
             var x = 0;
             var y = 0;
@@ -66,6 +68,7 @@
 
             var marker = new kakao.maps.Marker({position: new kakao.maps.LatLng(x, y)});
             marker.setMap(map);
+            center = marker;
         }
 
         //중간 지점 찾기
